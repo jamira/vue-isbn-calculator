@@ -5,7 +5,7 @@ const ISBN = ref('');
 const completedISBN = ref('');
 
 const isValidISBN = computed(() => {
-  return ISBN.value.length === 13 && /^\d+$/.test(ISBN.value);
+  return ISBN.value.length === 12 && /^\d+$/.test(ISBN.value);
 });
 
 watch(ISBN, (newISBN) => {
