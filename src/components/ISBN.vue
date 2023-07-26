@@ -8,6 +8,15 @@ const isValidISBN = computed(() => {
   return ISBN.value.length === 12 && /^\d+$/.test(ISBN.value);
 });
 
+const formattedISBN = computed(() => {
+  const IBSN = completedISBN.value.split('');
+  return IBSN.map((digit, index) => {
+    if (index === 0) return digit;
+    if (index === 3 || index === 8 || index === 12) return '-' + digit;
+    return digit;
+  }).join('');
+});
+
 watch(ISBN, (newISBN) => {
   const getDigits = newISBN.slice(0, 12);
   const digits = getDigits.split('').map((digit) => Number(digit));
